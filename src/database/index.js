@@ -33,9 +33,9 @@ pool.getConnection((err, connection) => {
 })
 
 
-async function query(queryString) {
+async function query(queryString, ...rest) {
   const promisePool = pool.promise();
-  const [rows, fields] = await promisePool.query(queryString)
+  const [rows, fields] = await promisePool.query(queryString, ...rest)
 
   return rows
 }
